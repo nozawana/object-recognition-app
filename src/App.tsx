@@ -1,10 +1,12 @@
 import './App.css'
 import { SmartphoneCamera } from './components/SmartphoneCamera';
+import { runOnnxModel } from './lib/yolo26';
 
 function App() {
   return (
     <>
-      <SmartphoneCamera onRunModel={(args) => {} } />
+      <canvas id="outputCanvas" style={{ position: 'relative', zIndex: 10 }} />
+      <SmartphoneCamera onRunModel={(args) => runOnnxModel(args, "outputCanvas")} />
     </>
   )
 }
